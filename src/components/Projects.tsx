@@ -7,21 +7,23 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
-import proj1Img from '../assets/Screenshot_2025_1001_133556 1.png';
-import proj2Img from '../assets/Screenshot_2025_1001_133556 1 (1).png';
-import proj3Img from '../assets/Screenshot 2026-05-01 195708 1.png';
+import janSevaImg from '../assets/Screenshot_2025_1001_133556 1.png';
+import allynetImg from '../assets/Screenshot_2025_1001_133556 1 (1).png';
+import krishiImg from '../assets/Screenshot 2026-05-01 195708 1.png';
+import comicpreneurImg from '../assets/comicpreneur_preview.png';
+import bazarioImg from '../assets/bazario_preview.png';
 
 interface Project {
   id: string;
   title: string;
   subtitle: string;
-  category: 'web' | 'aiml' | 'android' | 'system';
+  category: 'web' | 'aiml' | 'ecommerce';
   image: string;
   description: string;
   longDescription: string;
   tags: string[];
   keyFeatures: string[];
-  liveUrl?: string;
+  liveUrl: string;
   githubUrl: string;
   status: string;
 }
@@ -32,85 +34,106 @@ const Projects: React.FC = () => {
 
   const projects: Project[] = [
     {
+      id: 'bazario',
+      title: 'Bazario – Live Stream Commerce',
+      subtitle: 'Next-gen multi-vendor e-commerce with real-time video shopping',
+      category: 'ecommerce',
+      image: bazarioImg,
+      description: 'Interactive live commerce marketplace integrating Agora RTC video streaming, seller dashboards, in-app messaging, multi-category inventory, and streamlined order checkout.',
+      longDescription: 'Bazario re-imagines online shopping by bringing real-time interactive video broadcasts directly to e-commerce. Buyers can view live merchant product demonstrations, interact via real-time comments, and place one-click orders, while merchants manage stores, products, and broadcast streams from dedicated dashboards.',
+      tags: ['React.js', 'Agora RTC SDK', 'Firebase', 'Real-time Chat', 'Tailwind CSS', 'Vite'],
+      keyFeatures: [
+        'Interactive live video broadcast shopping powered by Agora RTC',
+        'Real-time buyer-seller instant messaging and chat channels',
+        'Comprehensive Seller & Admin dashboard with catalog management',
+        'Dynamic search, category filters, cart, and instant order pipeline'
+      ],
+      liveUrl: 'https://bazario-1.web.app/',
+      githubUrl: 'https://github.com/salmanxdev/Bazario_Web',
+      status: 'Live & Featured'
+    },
+    {
+      id: 'allynet',
+      title: 'AllyNet – Mentorship & Alumni Network',
+      subtitle: 'Next-gen student-alumni networking, career roadmaps & mentorship ecosystem',
+      category: 'web',
+      image: allynetImg,
+      description: 'Comprehensive campus and alumni networking portal enabling 1-on-1 mentorship bookings, alumni career directory, collaborative feed, and student resource vaults.',
+      longDescription: 'As Technical Founder, engineered the full-stack web platform for AllyNet to connect college students with experienced alumni mentors. Features include role-based authentication (Student, Alumni, Admin), verified mentor directory, appointment booking pipelines, interactive community discussion feeds, and digital academic resource sharing.',
+      tags: ['React.js', 'Firebase Auth', 'Cloud Firestore', 'Tailwind CSS', 'Vite', 'Full Stack'],
+      keyFeatures: [
+        'Dynamic verified alumni directory with mentorship scheduling',
+        'Community discussion feed with media uploads and filters',
+        'Curated career roadmaps and academic resource downloads',
+        'Role-based permissions for students, alumni, and administrators'
+      ],
+      liveUrl: 'https://allynet-com.web.app/',
+      githubUrl: 'https://github.com/Allynetcom/allynet',
+      status: 'Startup Venture'
+    },
+    {
       id: 'comicpreneur',
       title: 'ComicPreneur – Event Platform',
-      subtitle: 'Dynamic event registration & administrative real-time dashboard',
+      subtitle: 'Dynamic event registration, QR validation & real-time analytics',
       category: 'web',
-      image: proj2Img,
-      description: 'Engineered a high-performance event management and ticketing platform featuring a real-time Firebase backend, role-based admin dashboard, and instant Excel export.',
-      longDescription: 'ComicPreneur was created to handle hundreds of concurrent registrations seamlessly during college entrepreneurship summits. Built with React and Firebase, it features real-time ticket validation, instant notifications, automated confirmation generation, and advanced analytics exports for organizers.',
-      tags: ['React.js', 'Firebase', 'Firestore', 'Excel Export API', 'Tailwind CSS'],
+      image: comicpreneurImg,
+      description: 'High-performance event management and ticketing platform featuring real-time Firebase backend, role-based admin dashboard, and instant Excel export.',
+      longDescription: 'ComicPreneur was created to handle hundreds of concurrent registrations seamlessly during college entrepreneurship summits. Built with React and Firebase, it features atomic transaction ticketing, instant notifications, automated confirmation passes, and advanced analytics exports for organizers.',
+      tags: ['React.js', 'Firebase Firestore', 'Role-Based Auth', 'Excel Export API', 'Tailwind CSS'],
       keyFeatures: [
-        'Real-time Firestore live attendee synchronisation',
-        'Secure multi-role Admin Dashboard with live stats',
-        'One-click Excel (.xlsx) attendee data export',
-        'Automated receipt and pass generation'
+        'Real-time Firestore live attendee synchronisation and capacity locks',
+        'Secure multi-role Admin Dashboard with live registration metrics',
+        'One-click Excel (.xlsx) attendee data export for organizers',
+        'Automated receipt and digital QR pass generation'
       ],
-      liveUrl: 'https://github.com/salmanxdev/ComicPreneur',
+      liveUrl: 'https://comicpreneur-16.web.app/',
       githubUrl: 'https://github.com/salmanxdev/ComicPreneur',
       status: 'Live & In Use'
     },
     {
       id: 'krishi-mitra',
-      title: 'Krishi-Mitra – Smart Farming App',
+      title: 'Krishi-Mitra – Smart Farming Assistant',
       subtitle: 'AI-driven agricultural assistant & plant pathology detector',
       category: 'aiml',
-      image: proj3Img,
-      description: 'Intelligent Android application equipped with live Weather API forecasting, conversational AI chatbot, and machine learning computer vision for plant disease detection.',
-      longDescription: 'Krishi-Mitra empowers rural and modern farmers by providing real-time agronomic insights in regional languages. It integrates a computer vision model to diagnose crop diseases from leaf photos and pairs users with an intelligent chatbot for instant remedy guidance.',
-      tags: ['Android', 'AI Chatbot', 'Plant Disease CV', 'MongoDB', 'Weather API', 'Python'],
+      image: krishiImg,
+      description: 'Intelligent agricultural platform equipped with live Weather API forecasting, conversational AI chatbot, and computer vision plant disease detection.',
+      longDescription: 'Krishi-Mitra empowers rural and modern farmers by providing real-time agronomic insights in regional languages. It integrates a computer vision model to diagnose crop diseases from leaf photos and pairs users with an intelligent chatbot for instant remedy guidance alongside live hyper-local weather alerts.',
+      tags: ['React.js', 'Computer Vision ML', 'AI Chatbot', 'Weather REST API', 'Full Stack'],
       keyFeatures: [
         'AI Computer Vision for instant plant leaf disease diagnosis',
         'Multilingual conversational assistant for localized farming queries',
-        'Real-time hyper-local weather forecast integration',
-        'MongoDB backend for agricultural records and advisory data'
+        'Real-time hyper-local weather forecast radar integration',
+        'Crop advisory database and farmer log management'
       ],
-      liveUrl: 'https://github.com/salmanxdev/Krishi-Mitra',
-      githubUrl: 'https://github.com/salmanxdev/Krishi-Mitra',
+      liveUrl: 'https://krishi-mitr-web.vercel.app/',
+      githubUrl: 'https://github.com/salmanxdev/krishi-mitra',
       status: 'Featured AI Project'
     },
     {
       id: 'jan-seva',
-      title: 'Jan-Seva – Citizen Service Platform',
-      subtitle: 'Unified civic complaint management & government service portal',
+      title: 'Jan-Seva – Citizen Grievance Portal',
+      subtitle: 'Unified civic complaint management, AI triage & government service portal',
       category: 'web',
-      image: proj1Img,
-      description: 'Mobile + Web platform streamlining citizen complaint submissions, government service requests, automated tracking, and integrated conversational support.',
-      longDescription: 'Jan-Seva simplifies digital governance for municipal and district communities. It combines an automated AI triage chatbot to categorize citizen grievances with cloud document storage and real-time status tracking for transparent civic accountability.',
-      tags: ['React.js', 'Firebase', 'Cloud Storage', 'Chatbot', 'Tailwind', 'REST APIs'],
+      image: janSevaImg,
+      description: 'Digital governance platform streamlining citizen complaint submissions, automated department triage, geo-tagged photo evidence, and transparent resolution tracking.',
+      longDescription: 'Jan-Seva simplifies digital governance for municipal and district communities. It combines an automated AI triage chatbot to categorize citizen grievances with cloud document storage, GPS-tagged photo evidence, and real-time status tracking for transparent civic accountability.',
+      tags: ['React.js', 'Firebase Auth', 'Cloud Storage', 'AI Chatbot', 'Tailwind CSS', 'REST APIs'],
       keyFeatures: [
         'Citizen grievance submission with GPS & photo evidence upload',
         'Automated AI chatbot assisting users in finding public services',
-        'Live tracking pipeline with SMS/status updates',
-        'Secure cloud document vault for government certificates'
+        'Live tracking pipeline with end-to-end resolution audit trail',
+        'Secure cloud document vault for government verification'
       ],
-      liveUrl: 'https://github.com/salmanxdev/Jan-Seva',
-      githubUrl: 'https://github.com/salmanxdev/Jan-Seva',
+      liveUrl: 'https://jan-seva-web.vercel.app/',
+      githubUrl: 'https://github.com/salmanxdev/Jan-Seva-web',
       status: 'Civic Tech Innovation'
-    },
-    {
-      id: 'library-system',
-      title: 'Library Management System',
-      subtitle: 'High-speed persistent Java database & transaction management',
-      category: 'system',
-      image: proj1Img,
-      description: 'Robust Java-based system for catalog management, automated book issuing, fine calculation, instant search, and persistent file-handling storage.',
-      longDescription: 'Developed using Core Java with strict Object-Oriented Principles, this system guarantees deterministic file-based transactional integrity, efficient binary and text search indices, and automated overdue alerts.',
-      tags: ['Java', 'OOP', 'File Handling', 'Data Structures', 'Search Algorithms'],
-      keyFeatures: [
-        'Persistent file handling for ACID-like data storage',
-        'Rapid book search index by ISBN, author, and genre',
-        'Automated date-difference overdue and fine calculation',
-        'Modular architecture ready for database connector migration'
-      ],
-      liveUrl: 'https://github.com/salmanxdev/Library-Management-System',
-      githubUrl: 'https://github.com/salmanxdev/Library-Management-System',
-      status: 'Core Systems'
     }
   ];
 
   const filteredProjects = activeFilter === 'all'
     ? projects
+    : activeFilter === 'web'
+    ? projects.filter(p => p.category === 'web' || p.category === 'ecommerce')
     : projects.filter(p => p.category === activeFilter);
 
   return (
@@ -125,7 +148,7 @@ const Projects: React.FC = () => {
             Featured <span className="text-gradient">Engineering Projects</span>
           </h2>
           <p className="section-subtitle">
-            Explore applications I've engineered — spanning civic intelligence, agricultural AI, event platforms, and core system architectures.
+            Explore 5 production-grade applications I've engineered — spanning live stream commerce, alumni mentorship ecosystems, event platforms, agricultural AI, and civic intelligence.
           </p>
         </div>
 
@@ -138,10 +161,10 @@ const Projects: React.FC = () => {
           marginBottom: '3rem'
         }}>
           {[
-            { id: 'all', label: 'All Projects' },
+            { id: 'all', label: 'All Projects (5)' },
             { id: 'web', label: 'Web & Cloud' },
-            { id: 'aiml', label: 'AI/ML & Vision' },
-            { id: 'system', label: 'Systems & Core' }
+            { id: 'ecommerce', label: 'Live Commerce' },
+            { id: 'aiml', label: 'AI/ML & Vision' }
           ].map(tab => (
             <button
               key={tab.id}
@@ -272,41 +295,54 @@ const Projects: React.FC = () => {
               {/* Action Buttons */}
               <div style={{
                 display: 'flex',
-                gap: '0.75rem',
+                gap: '0.6rem',
                 paddingTop: '1rem',
                 borderTop: '1px solid rgba(255, 255, 255, 0.06)'
               }}>
                 <button
                   onClick={() => setSelectedProject(project)}
                   className="btn btn-accent"
-                  style={{ flex: 1, padding: '0.6rem 1rem', fontSize: '0.85rem' }}
+                  style={{ flex: 1, padding: '0.6rem 0.8rem', fontSize: '0.82rem', whiteSpace: 'nowrap' }}
                 >
-                  Case Breakdown <ArrowUpRight size={15} />
+                  Case Breakdown <ArrowUpRight size={14} />
                 </button>
+
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-glass"
+                  style={{
+                    padding: '0.6rem 0.85rem',
+                    color: 'var(--color-accent)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    fontSize: '0.82rem',
+                    textDecoration: 'none'
+                  }}
+                  title="Visit Live Website"
+                >
+                  <ExternalLink size={15} /> <span>Live</span>
+                </a>
 
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="btn btn-glass"
-                  style={{ padding: '0.6rem 0.9rem' }}
-                  title="View Source on GitHub"
+                  style={{
+                    padding: '0.6rem 0.85rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    fontSize: '0.82rem',
+                    textDecoration: 'none'
+                  }}
+                  title="View GitHub Repository"
                 >
-                  <GithubIcon size={16} />
+                  <GithubIcon size={15} /> <span>Code</span>
                 </a>
-
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-glass"
-                    style={{ padding: '0.6rem 0.9rem', color: 'var(--color-accent)' }}
-                    title="Live Demo"
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                )}
               </div>
 
             </div>
@@ -334,7 +370,7 @@ const Projects: React.FC = () => {
           <div
             className="glass-card"
             style={{
-              maxWidth: '650px',
+              maxWidth: '680px',
               width: '100%',
               maxHeight: '90vh',
               overflowY: 'auto',
@@ -391,19 +427,31 @@ const Projects: React.FC = () => {
               ))}
             </div>
 
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.75rem', flexWrap: 'wrap' }}>
+              <a
+                href={selectedProject.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-accent"
+                style={{ flex: 1, minWidth: '160px', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+              >
+                <ExternalLink size={16} /> Visit Live Website
+              </a>
+
               <a
                 href={selectedProject.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-accent"
-                style={{ flex: 1 }}
+                className="btn btn-glass"
+                style={{ flex: 1, minWidth: '160px', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
               >
-                <GithubIcon size={16} /> View on GitHub
+                <GithubIcon size={16} /> View GitHub Repo
               </a>
+
               <button
                 onClick={() => setSelectedProject(null)}
                 className="btn btn-glass"
+                style={{ padding: '0.6rem 1.25rem' }}
               >
                 Close
               </button>
@@ -416,3 +464,4 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
+

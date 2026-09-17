@@ -1,26 +1,50 @@
 import "./Projects.css";
+import janSevaImg from "../../assets/Screenshot_2025_1001_133556 1.png";
+import allynetImg from "../../assets/Screenshot_2025_1001_133556 1 (1).png";
+import krishiImg from "../../assets/Screenshot 2026-05-01 195708 1.png";
+import comicpreneurImg from "../../assets/comicpreneur_preview.png";
+import bazarioImg from "../../assets/bazario_preview.png";
 
 const projects = [
   {
     id: 1,
-    image: "/images/janseva.png",
-    title: "Empowering Communities Digitally",
-    description:
-      "Jan Seva is a unified platform designed to bring essential services, local sellers, and everyday opportunities closer to people.",
+    image: bazarioImg,
+    title: "Bazario – Live Stream Commerce",
+    description: "Next-gen multi-vendor e-commerce with real-time video shopping powered by Agora RTC.",
+    liveUrl: "https://bazario-1.web.app/",
+    githubUrl: "https://github.com/salmanxdev/Bazario_Web",
   },
   {
     id: 2,
-    image: "/images/allynet.png",
-    title: "Mentorship, Roadmaps & Growth",
-    description:
-      "ALLYNET connects students with experienced alumni and mentors, offering trusted career guidance and growth.",
+    image: allynetImg,
+    title: "AllyNet – Mentorship & Alumni Network",
+    description: "Comprehensive platform connecting students with alumni mentors, roadmaps, and career growth.",
+    liveUrl: "https://allynet-com.web.app/",
+    githubUrl: "https://github.com/Allynetcom/allynet",
   },
   {
     id: 3,
-    image: "/images/krishimitra.png",
-    title: "Empowering Farmers Through Technology",
-    description:
-      "Krishi Mitra provides AI-powered assistance, practical farming knowledge, and digital tools for farmers.",
+    image: comicpreneurImg,
+    title: "ComicPreneur – Event Ticketing Platform",
+    description: "High-performance event registration platform featuring QR tickets and real-time admin metrics.",
+    liveUrl: "https://comicpreneur-16.web.app/",
+    githubUrl: "https://github.com/salmanxdev/ComicPreneur",
+  },
+  {
+    id: 4,
+    image: krishiImg,
+    title: "Krishi-Mitra – Smart Farming Assistant",
+    description: "Smart farming app featuring AI plant disease detection, weather forecasts, and agronomic assistance.",
+    liveUrl: "https://krishi-mitr-web.vercel.app/",
+    githubUrl: "https://github.com/salmanxdev/krishi-mitra",
+  },
+  {
+    id: 5,
+    image: janSevaImg,
+    title: "Jan-Seva – Citizen Grievance Portal",
+    description: "Unified civic complaint management, automated AI department triage, and transparent tracking.",
+    liveUrl: "https://jan-seva-web.vercel.app/",
+    githubUrl: "https://github.com/salmanxdev/Jan-Seva-web",
   },
 ];
 
@@ -44,17 +68,28 @@ const Projects = () => {
 
               <div className="project-content">
                 <h3>{project.title}</h3>
-
                 <p>{project.description}</p>
 
-                <div className="project-buttons">
-                  <button className="know-more">
-                    Know More
-                  </button>
+                <div className="project-buttons" style={{ display: 'flex', gap: '0.75rem' }}>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="visit-btn"
+                    style={{ textDecoration: 'none', textAlign: 'center' }}
+                  >
+                    Visit Live
+                  </a>
 
-                  <button className="visit-btn">
-                    Visit
-                  </button>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="know-more"
+                    style={{ textDecoration: 'none', textAlign: 'center' }}
+                  >
+                    GitHub
+                  </a>
                 </div>
               </div>
             </div>
