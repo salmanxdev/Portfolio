@@ -12,6 +12,7 @@ import allynetImg from '../assets/Screenshot_2025_1001_133556 1 (1).png';
 import krishiImg from '../assets/Screenshot 2026-05-01 195708 1.png';
 import comicpreneurImg from '../assets/comicpreneur_preview.png';
 import bazarioImg from '../assets/bazario_preview.png';
+import vanikaImg from '../assets/vanika_preview.png';
 
 interface Project {
   id: string;
@@ -34,23 +35,42 @@ const Projects: React.FC = () => {
 
   const projects: Project[] = [
     {
-      id: 'bazario',
-      title: 'Bazario – Live Stream Commerce',
-      subtitle: 'Next-gen multi-vendor e-commerce with real-time video shopping',
-      category: 'ecommerce',
-      image: bazarioImg,
-      description: 'Interactive live commerce marketplace integrating Agora RTC video streaming, seller dashboards, in-app messaging, multi-category inventory, and streamlined order checkout.',
-      longDescription: 'Bazario re-imagines online shopping by bringing real-time interactive video broadcasts directly to e-commerce. Buyers can view live merchant product demonstrations, interact via real-time comments, and place one-click orders, while merchants manage stores, products, and broadcast streams from dedicated dashboards.',
-      tags: ['React.js', 'Agora RTC SDK', 'Firebase', 'Real-time Chat', 'Tailwind CSS', 'Vite'],
+      id: 'comicpreneur',
+      title: 'ComicPreneur – Event Platform',
+      subtitle: 'Dynamic event registration, QR validation & real-time analytics',
+      category: 'web',
+      image: comicpreneurImg,
+      description: 'High-performance event management and ticketing platform featuring real-time Firebase backend, role-based admin dashboard, and instant Excel export.',
+      longDescription: 'ComicPreneur was created to handle hundreds of concurrent registrations seamlessly during college entrepreneurship summits. Built with React and Firebase, it features atomic transaction ticketing, instant notifications, automated confirmation passes, and advanced analytics exports for organizers.',
+      tags: ['React.js', 'Firebase Firestore', 'Role-Based Auth', 'Excel Export API', 'Tailwind CSS'],
       keyFeatures: [
-        'Interactive live video broadcast shopping powered by Agora RTC',
-        'Real-time buyer-seller instant messaging and chat channels',
-        'Comprehensive Seller & Admin dashboard with catalog management',
-        'Dynamic search, category filters, cart, and instant order pipeline'
+        'Real-time Firestore live attendee synchronisation and capacity locks',
+        'Secure multi-role Admin Dashboard with live registration metrics',
+        'One-click Excel (.xlsx) attendee data export for organizers',
+        'Automated receipt and digital QR pass generation'
       ],
-      liveUrl: 'https://bazario-1.web.app/',
-      githubUrl: 'https://github.com/salmanxdev/Bazario_Web',
-      status: 'Live & Featured'
+      liveUrl: 'https://comicpreneur-16.web.app/',
+      githubUrl: 'https://github.com/salmanxdev/ComicPreneur',
+      status: 'Live & In Use'
+    },
+    {
+      id: 'vanika',
+      title: 'Vanika – Tree Survival Protocol',
+      subtitle: 'Decentralized sapling survival verification, geofencing & CSR ledger',
+      category: 'web',
+      image: vanikaImg,
+      description: 'Ecological impact protocol introducing low-cost QR tagging, geofenced mobile verification, and outcome-based CSR funding release to ensure sapling survival.',
+      longDescription: 'Vanika tackles the critical gap between tree plantation and multi-year survival. It replaces unverifiable plantation drives with a strict biological checkpoint protocol (Month 1, Month 6, Year 1, Year 3). Saplings are tagged with QR codes, audited through geofenced photo uploads, and tied to custodian incentives and corporate CSR funding bonds.',
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Geofencing', 'Web3 / Verification'],
+      keyFeatures: [
+        'Decentralized QR ledger tracking saplings across critical biological milestones',
+        'Geofenced mobile audit validation and photo verification workflows',
+        'Dynamic 5-year survival projections & replanting capital savings calculator',
+        'Dedicated role portals for Public, Custodian Hub, Verifiers, and CSR Sponsors'
+      ],
+      liveUrl: 'https://vanika-theta.vercel.app/',
+      githubUrl: 'https://github.com/thewebcreatorAnshul/vanika',
+      status: 'Live & Impact'
     },
     {
       id: 'allynet',
@@ -72,42 +92,23 @@ const Projects: React.FC = () => {
       status: 'Startup Venture'
     },
     {
-      id: 'comicpreneur',
-      title: 'ComicPreneur – Event Platform',
-      subtitle: 'Dynamic event registration, QR validation & real-time analytics',
-      category: 'web',
-      image: comicpreneurImg,
-      description: 'High-performance event management and ticketing platform featuring real-time Firebase backend, role-based admin dashboard, and instant Excel export.',
-      longDescription: 'ComicPreneur was created to handle hundreds of concurrent registrations seamlessly during college entrepreneurship summits. Built with React and Firebase, it features atomic transaction ticketing, instant notifications, automated confirmation passes, and advanced analytics exports for organizers.',
-      tags: ['React.js', 'Firebase Firestore', 'Role-Based Auth', 'Excel Export API', 'Tailwind CSS'],
+      id: 'bazario',
+      title: 'Bazario – Live Stream Commerce',
+      subtitle: 'Next-gen multi-vendor e-commerce with real-time video shopping',
+      category: 'ecommerce',
+      image: bazarioImg,
+      description: 'Interactive live commerce marketplace integrating Agora RTC video streaming, seller dashboards, in-app messaging, multi-category inventory, and streamlined order checkout.',
+      longDescription: 'Bazario re-imagines online shopping by bringing real-time interactive video broadcasts directly to e-commerce. Buyers can view live merchant product demonstrations, interact via real-time comments, and place one-click orders, while merchants manage stores, products, and broadcast streams from dedicated dashboards.',
+      tags: ['React.js', 'Agora RTC SDK', 'Firebase', 'Real-time Chat', 'Tailwind CSS', 'Vite'],
       keyFeatures: [
-        'Real-time Firestore live attendee synchronisation and capacity locks',
-        'Secure multi-role Admin Dashboard with live registration metrics',
-        'One-click Excel (.xlsx) attendee data export for organizers',
-        'Automated receipt and digital QR pass generation'
+        'Interactive live video broadcast shopping powered by Agora RTC',
+        'Real-time buyer-seller instant messaging and chat channels',
+        'Comprehensive Seller & Admin dashboard with catalog management',
+        'Dynamic search, category filters, cart, and instant order pipeline'
       ],
-      liveUrl: 'https://comicpreneur-16.web.app/',
-      githubUrl: 'https://github.com/salmanxdev/ComicPreneur',
-      status: 'Live & In Use'
-    },
-    {
-      id: 'krishi-mitra',
-      title: 'Krishi-Mitra – Smart Farming Assistant',
-      subtitle: 'AI-driven agricultural assistant & plant pathology detector',
-      category: 'aiml',
-      image: krishiImg,
-      description: 'Intelligent agricultural platform equipped with live Weather API forecasting, conversational AI chatbot, and computer vision plant disease detection.',
-      longDescription: 'Krishi-Mitra empowers rural and modern farmers by providing real-time agronomic insights in regional languages. It integrates a computer vision model to diagnose crop diseases from leaf photos and pairs users with an intelligent chatbot for instant remedy guidance alongside live hyper-local weather alerts.',
-      tags: ['React.js', 'Computer Vision ML', 'AI Chatbot', 'Weather REST API', 'Full Stack'],
-      keyFeatures: [
-        'AI Computer Vision for instant plant leaf disease diagnosis',
-        'Multilingual conversational assistant for localized farming queries',
-        'Real-time hyper-local weather forecast radar integration',
-        'Crop advisory database and farmer log management'
-      ],
-      liveUrl: 'https://krishi-mitr-web.vercel.app/',
-      githubUrl: 'https://github.com/salmanxdev/krishi-mitra',
-      status: 'Featured AI Project'
+      liveUrl: 'https://bazario-1.web.app/',
+      githubUrl: 'https://github.com/salmanxdev/Bazario_Web',
+      status: 'Live & Featured'
     },
     {
       id: 'jan-seva',
@@ -127,6 +128,25 @@ const Projects: React.FC = () => {
       liveUrl: 'https://jan-seva-web.vercel.app/',
       githubUrl: 'https://github.com/salmanxdev/Jan-Seva-web',
       status: 'Civic Tech Innovation'
+    },
+    {
+      id: 'krishi-mitra',
+      title: 'Krishi-Mitra – Smart Farming Assistant',
+      subtitle: 'AI-driven agricultural assistant & plant pathology detector',
+      category: 'aiml',
+      image: krishiImg,
+      description: 'Intelligent agricultural platform equipped with live Weather API forecasting, conversational AI chatbot, and computer vision plant disease detection.',
+      longDescription: 'Krishi-Mitra empowers rural and modern farmers by providing real-time agronomic insights in regional languages. It integrates a computer vision model to diagnose crop diseases from leaf photos and pairs users with an intelligent chatbot for instant remedy guidance alongside live hyper-local weather alerts.',
+      tags: ['React.js', 'Computer Vision ML', 'AI Chatbot', 'Weather REST API', 'Full Stack'],
+      keyFeatures: [
+        'AI Computer Vision for instant plant leaf disease diagnosis',
+        'Multilingual conversational assistant for localized farming queries',
+        'Real-time hyper-local weather forecast radar integration',
+        'Crop advisory database and farmer log management'
+      ],
+      liveUrl: 'https://krishi-mitr-web.vercel.app/',
+      githubUrl: 'https://github.com/salmanxdev/krishi-mitra',
+      status: 'Featured AI Project'
     }
   ];
 
@@ -148,7 +168,7 @@ const Projects: React.FC = () => {
             Featured <span className="text-gradient">Engineering Projects</span>
           </h2>
           <p className="section-subtitle">
-            Explore 5 production-grade applications I've engineered — spanning live stream commerce, alumni mentorship ecosystems, event platforms, agricultural AI, and civic intelligence.
+            Explore 6 production-grade applications I've engineered — spanning event registration platforms, tree survival protocols, mentorship networks, live stream commerce, civic governance, and agricultural AI.
           </p>
         </div>
 
@@ -161,7 +181,7 @@ const Projects: React.FC = () => {
           marginBottom: '3rem'
         }}>
           {[
-            { id: 'all', label: 'All Projects (5)' },
+            { id: 'all', label: 'All Projects (6)' },
             { id: 'web', label: 'Web & Cloud' },
             { id: 'ecommerce', label: 'Live Commerce' },
             { id: 'aiml', label: 'AI/ML & Vision' }
