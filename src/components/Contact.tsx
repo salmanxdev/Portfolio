@@ -24,37 +24,28 @@ const Contact: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
+  const DEFAULT_ACCESS_KEY = '28c13510-b182-4451-8a2e-3aa64828975b';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage(null);
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-
-    if (!accessKey || accessKey === 'your_access_key_here' || accessKey.trim() === '') {
-      setIsSubmitting(false);
-      setErrorMessage(
-        'Please add your free access key to the .env file (VITE_WEB3FORMS_ACCESS_KEY). Get one instantly at https://web3forms.com.'
-      );
-      return;
-    }
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || DEFAULT_ACCESS_KEY;
 
     try {
+      const formPayload = new FormData();
+      formPayload.append('access_key', accessKey);
+      formPayload.append('name', formData.name);
+      formPayload.append('email', formData.email);
+      formPayload.append('subject', formData.subject || `New Portfolio Message from ${formData.name}`);
+      formPayload.append('message', formData.message);
+      formPayload.append('from_name', `${formData.name} via Portfolio`);
+      formPayload.append('botcheck', '');
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject || `New Portfolio Message from ${formData.name}`,
-          message: formData.message,
-          from_name: `${formData.name} via Portfolio`,
-          botcheck: ''
-        })
+        body: formPayload
       });
 
       const data = await response.json();
