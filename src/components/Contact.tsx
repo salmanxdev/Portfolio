@@ -5,7 +5,9 @@ import {
   MapPin, 
   Send, 
   Check, 
-  Copy 
+  Copy,
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
@@ -18,19 +20,58 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate send
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey || accessKey === 'your_access_key_here' || accessKey.trim() === '') {
       setIsSubmitting(false);
-      setIsSent(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setIsSent(false), 5000);
-    }, 1000);
+      setErrorMessage(
+        'Please add your free access key to the .env file (VITE_WEB3FORMS_ACCESS_KEY). Get one instantly at https://web3forms.com.'
+      );
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || `New Portfolio Message from ${formData.name}`,
+          message: formData.message,
+          from_name: `${formData.name} via Portfolio`,
+          botcheck: ''
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSent(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setIsSent(false), 7000);
+      } else {
+        setErrorMessage(data.message || 'Failed to send message. Please try again or email directly.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setErrorMessage('Network error occurred. Please verify your connection or email directly at salmanx.dev@gmail.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyToClipboard = (text: string, type: 'email' | 'phone') => {
@@ -235,11 +276,31 @@ const Contact: React.FC = () => {
                 alignItems: 'center',
                 gap: '0.5rem'
               }}>
-                <Check size={18} /> Thank you! Your message has been sent successfully.
+                <Check size={18} style={{ flexShrink: 0 }} /> Thank you! Your message has been sent directly to my email.
+              </div>
+            )}
+
+            {errorMessage && (
+              <div style={{
+                padding: '1rem',
+                borderRadius: '10px',
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.4)',
+                color: '#f87171',
+                fontSize: '0.9rem',
+                marginBottom: '1.5rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '0.5rem',
+                lineHeight: 1.5
+              }}>
+                <AlertCircle size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>{errorMessage}</span>
               </div>
             )}
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="form-row">
                 <div>
                   <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '0.4rem' }}>
@@ -343,11 +404,27 @@ const Contact: React.FC = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className="btn btn-accent"
-                style={{ width: '100%', padding: '0.85rem 1rem', fontSize: '0.95rem' }}
+                style={{
+                  width: '100%',
+                  padding: '0.85rem 1rem',
+                  fontSize: '0.95rem',
+                  opacity: isSubmitting ? 0.75 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem'
+                }}
               >
-                {isSubmitting ? 'Sending Message...' : (
+                {isSubmitting ? (
                   <>
-                    Send Message <Send size={16} />
+                    <span>Sending Message...</span>
+                    <Loader2 size={16} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send size={16} />
                   </>
                 )}
               </button>
